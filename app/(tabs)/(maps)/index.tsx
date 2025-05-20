@@ -1,9 +1,28 @@
-import { Text, ScrollView } from "react-native";
+import { View, StyleSheet } from "react-native";
+import MapView, { Marker } from "react-native-maps";
 
-export default function TapMaps() {
+
+export default function App() {
+
     return (
-        <ScrollView>
-            <Text className="text-2xl font-bold text-gray-800">My Tabs</Text>
-        </ScrollView>
+        <View style={styles.container}>
+            <MapView
+                style={styles.map}
+                initialRegion={{
+                    latitude: 37.78825,
+                    longitude: -122.4324,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421,
+                }}
+            >
+                <Marker coordinate={{ latitude: 37.78825, longitude: -122.4324 }} />
+                <Marker coordinate={{ latitude: 37.7749, longitude: -122.4194 }} />
+            </MapView>
+        </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: { flex: 1 },
+    map: { flex: 1 },
+});
